@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "zooanimals")
 @IdClass(ZooAnimalId.class)
-public class ZooAnimal implements Serializable
+public class ZooAnimal extends Auditable implements Serializable
 {
 	@Id
 	@ManyToOne
@@ -32,6 +33,25 @@ public class ZooAnimal implements Serializable
 		this.animal = animal;
 	}
 	
+	@Override public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		
+		if (o == null || getClass() != o.getClass()) return false;
+		
+		ZooAnimal that = (ZooAnimal) o;
+		return ((this.zoo == null) ? 0 : this.zoo.getZooid()) == ((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
+				((this.animal == null) ? 0 : this.animal.getAnimalid()) ==
+						((that.animal == null) ? 0 : that.animal.getAnimalid());
+		//		zoo.equals(that.zoo) && animal.equals(that.animal)
+	}
+	
+	@Override public int hashCode()
+	{
+		//		return Objects.hash(zoo, animal);
+		return 13;
+	}
+	
 	public Zoo getZoo()
 	{
 		return zoo;
@@ -52,22 +72,43 @@ public class ZooAnimal implements Serializable
 		this.animal = animal;
 	}
 	
-	@Override public boolean equals(Object o)
+	public String getCreatedby()
 	{
-		if (this == o) return true;
-		
-		if (o == null || getClass() != o.getClass()) return false;
-		
-		ZooAnimal that = (ZooAnimal) o;
-		return ((this.zoo == null) ? 0 : this.zoo.getZooid()) == ((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
-				((this.animal == null) ? 0 : this.animal.getAnimalid()) ==
-						((that.animal == null) ? 0 : that.animal.getAnimalid());
-		//		zoo.equals(that.zoo) && animal.equals(that.animal)
+		return createdby;
 	}
 	
-	@Override public int hashCode()
+	public void setCreatedby(String createdby)
 	{
-//		return Objects.hash(zoo, animal);
-		return 13;
+		this.createdby = createdby;
+	}
+	
+	public Date getCreatedbydate()
+	{
+		return createdbydate;
+	}
+	
+	public void setCreatedbydate(Date date)
+	{
+		createdbydate = date;
+	}
+	
+	public String getLastmodifiedby()
+	{
+		return lastmodifiedby;
+	}
+	
+	public void setLastmodifiedby(String lastmod)
+	{
+		lastmodifiedby = lastmod;
+	}
+	
+	public Date getLastmodifiedbydate()
+	{
+		return lastmodifiedbydate;
+	}
+	
+	public void setLastmodifiedbydate(Date date)
+	{
+		lastmodifiedbydate = date;
 	}
 }

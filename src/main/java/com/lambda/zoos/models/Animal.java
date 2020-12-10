@@ -3,12 +3,13 @@ package com.lambda.zoos.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "animals")
-public class Animal
+public class Animal extends Auditable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,5 +60,45 @@ public class Animal
 	public void setZoos(Set<ZooAnimal> zoos)
 	{
 		this.zoos = zoos;
+	}
+	
+	public String getCreatedby()
+	{
+		return createdby;
+	}
+	
+	public void setCreatedby(String createdby)
+	{
+		this.createdby = createdby;
+	}
+	
+	public Date getCreatedbydate()
+	{
+		return createdbydate;
+	}
+	
+	public void setCreatedbydate(Date date)
+	{
+		createdbydate = date;
+	}
+	
+	public String getLastmodifiedby()
+	{
+		return lastmodifiedby;
+	}
+	
+	public void setLastmodifiedby(String lastmod)
+	{
+		lastmodifiedby = lastmod;
+	}
+	
+	public Date getLastmodifiedbydate()
+	{
+		return lastmodifiedbydate;
+	}
+	
+	public void setLastmodifiedbydate(Date date)
+	{
+		lastmodifiedbydate = date;
 	}
 }
