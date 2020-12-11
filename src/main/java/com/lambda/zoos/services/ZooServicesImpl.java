@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Transactional
 @Service(value = "zooServices")
 public class ZooServicesImpl implements ZooServices
@@ -23,5 +26,12 @@ public class ZooServicesImpl implements ZooServices
 	@Override public void deleteAll()
 	{
 		zoorepos.deleteAll();
+	}
+	
+	@Override public List<Zoo> findAllZoos()
+	{
+		List<Zoo> retlst = new ArrayList<>();
+		zoorepos.findAll().iterator().forEachRemaining(retlst::add);
+		return retlst;
 	}
 }
