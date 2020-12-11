@@ -23,14 +23,17 @@ public class ZooAnimal extends Auditable implements Serializable
 	@JsonIgnoreProperties(value = "zoos")
 	private Animal animal;
 	
+	private String incomingzoo;
+	
 	public ZooAnimal()
 	{
 	}
 	
-	public ZooAnimal(Zoo zoo, Animal animal)
+	public ZooAnimal(Zoo zoo, Animal animal, String incomingzoo)
 	{
 		this.zoo = zoo;
 		this.animal = animal;
+		this.incomingzoo = incomingzoo;
 	}
 	
 	@Override public boolean equals(Object o)
@@ -72,43 +75,14 @@ public class ZooAnimal extends Auditable implements Serializable
 		this.animal = animal;
 	}
 	
-	public String getCreatedby()
+	public String getIncomingzoo()
 	{
-		return createdby;
+		return incomingzoo;
 	}
 	
-	public void setCreatedby(String createdby)
+	public void setIncomingzoo(String incomingzoo)
 	{
-		this.createdby = createdby;
+		this.incomingzoo = incomingzoo;
 	}
 	
-	public Date getCreatedbydate()
-	{
-		return createdbydate;
-	}
-	
-	public void setCreatedbydate(Date date)
-	{
-		createdbydate = date;
-	}
-	
-	public String getLastmodifiedby()
-	{
-		return lastmodifiedby;
-	}
-	
-	public void setLastmodifiedby(String lastmod)
-	{
-		lastmodifiedby = lastmod;
-	}
-	
-	public Date getLastmodifiedbydate()
-	{
-		return lastmodifiedbydate;
-	}
-	
-	public void setLastmodifiedbydate(Date date)
-	{
-		lastmodifiedbydate = date;
-	}
 }

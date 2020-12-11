@@ -61,44 +61,4 @@ public class Animal extends Auditable
 	{
 		this.zoos = zoos;
 	}
-	
-	public String getCreatedby()
-	{
-		return createdby;
-	}
-	
-	public void setCreatedby(String createdby)
-	{
-		this.createdby = createdby;
-	}
-	
-	public Date getCreatedbydate()
-	{
-		return createdbydate;
-	}
-	
-	public void setCreatedbydate(Date date)
-	{
-		createdbydate = date;
-	}
-	
-	public String getLastmodifiedby()
-	{
-		return lastmodifiedby;
-	}
-	
-	public void setLastmodifiedby(String lastmod)
-	{
-		lastmodifiedby = lastmod;
-	}
-	
-	public Date getLastmodifiedbydate()
-	{
-		return lastmodifiedbydate;
-	}
-	
-	public void setLastmodifiedbydate(Date date)
-	{
-		lastmodifiedbydate = date;
-	}
 }
